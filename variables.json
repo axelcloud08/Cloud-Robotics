@@ -1,0 +1,10 @@
+{
+    "server_host" : "169.254.175.150" ,
+    "comando_port" : 33333,
+    "qr_file" : "qr_detection/qr_code.txt",
+    "frame_count" : 0,
+    "sensor" : 0,
+    "velocidad" : 2,
+    "ruta_modelo" : "/home/axel08/Documents/best.pt"
+
+}
