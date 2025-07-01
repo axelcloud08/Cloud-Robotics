@@ -8,8 +8,8 @@
 #include "Encoders.h"
 
 Temporizador EncodersPrint(50);
-Encoder left(19,18);
-Encoder rigth(20,21);
+Encoder left(18,19);
+Encoder rigth(21,20);
 MiniMaestro maestro(Serial2);
 Motors motor_driver(0,1);
 char direction;
@@ -90,8 +90,6 @@ void setup() {
   Serial.begin(115200);
   Serial2.begin(9600);
   Serial.setTimeout(10);
-  ServosIniciar();
-  //Serial.println("conexion establecida");
 
   pinMode(left.pin1, INPUT_PULLUP);
   pinMode(left.pin2, INPUT_PULLUP);
@@ -100,6 +98,7 @@ void setup() {
 
   attachInterrupt(digitalPinToInterrupt(left.pin1), left_reading, CHANGE);
   attachInterrupt(digitalPinToInterrupt(rigth.pin1), rigth_reading, CHANGE);
+  ServosIniciar();
 }
 
 void loop() {
