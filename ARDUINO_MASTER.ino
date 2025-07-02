@@ -7,7 +7,7 @@
 #include "Temporizador.h"
 #include "Encoders.h"
 
-Temporizador EncodersPrint(50);
+Temporizador EncodersPrint(100);
 Encoder left(18,19);
 Encoder rigth(21,20);
 MiniMaestro maestro(Serial2);
@@ -48,7 +48,7 @@ Servo back_flipper1(0, 2224, 1008, 1648, 3);
 Servo back_flipper2(1, 2224, 1008, 1648, 3);
 Servo front_flipper1(2, 2224, 1008, 1648, 3);
 Servo front_flipper2(3, 2224, 1008, 1648, 3);
-Servo base(4, 2224, 1527, 2224, 10);
+Servo base(4, 2000, 1080, 1080, 10);
 Servo codo(5, 2224, 1008, 1008, 10);
 Servo cuello(6, 2224, 1008, 1648, 10);
 Servo garra(7, 2224,1008, 2224, 10);
@@ -87,8 +87,8 @@ void ServosIniciar(){
 
 void setup() {
   motor_driver.iniciardriver();
-  Serial.begin(115200);
-  Serial2.begin(9600);
+  Serial.begin(9600);
+  Serial2.begin(115200);
   Serial.setTimeout(10);
 
   pinMode(left.pin1, INPUT_PULLUP);
@@ -184,13 +184,13 @@ ServosUpdate();
       break;
 
       case 'u':      
-      base.go_toMIN();
-      codo.go_toPrepos(1438);
+      base.go_toMAX();
+      codo.go_toPrepos(1800);
       break;
 
       case 'n':      
       codo.go_toMIN();
-      base.go_toMAX();
+      base.go_toMIN();
       break;
     
       case 'i':
@@ -198,7 +198,7 @@ ServosUpdate();
       break;
 
       case 'k':
-      codo.go_toMIN();
+      codo.go_toPrepos(1500);
       break;
      
       case 'l' :
