@@ -49,8 +49,8 @@ Servo back_flipper2(1, 2224, 1008, 1648, 3);
 Servo front_flipper1(2, 2224, 1008, 1648, 3);
 Servo front_flipper2(3, 2224, 1008, 1648, 3);
 Servo base(4, 2000, 1080, 1080, 10);
-Servo codo(5, 2224, 1008, 1008, 10);
-Servo cuello(6, 2224, 1008, 1648, 10);
+Servo codo(5, 2224, 1008, 1008, 15);
+Servo cuello(11, 2224, 1008, 1648, 10);
 Servo garra(7, 2224,1008, 2224, 10);
 
 
@@ -188,7 +188,7 @@ ServosUpdate();
       codo.go_toPrepos(1800);
       break;
 
-      case 'n':      
+      case 'n':   
       codo.go_toMIN();
       base.go_toMIN();
       break;
