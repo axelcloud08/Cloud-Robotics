@@ -46,8 +46,8 @@ void rigth_reading(){
 
 Servo back_flipper1(0, 2224, 1008, 1648, 5);
 Servo back_flipper2(1, 2224, 1008, 1648, 5);
-Servo front_flipper1(2, 2224, 1008, 1648, 5);
-Servo front_flipper2(3, 2224, 1008, 1648, 5);
+Servo front_flipper1(2, 2200, 1008, 1648, 5);
+Servo front_flipper2(3, 2200, 1008, 1648, 5);
 Servo base(4, 2000, 1084, 1084, 10);
 Servo codo(5, 2050, 1500, 1008, 15);
 Servo cuello(11, 2224, 1008, 1616, 10);
@@ -151,19 +151,19 @@ ServosUpdate();
       break;
 
       case 't':
-      front_flipper1.go_toMAX();
-      break;
-
-      case 'g':
-      front_flipper1.go_toMIN();
-      break;
-
-      case 'y':
       front_flipper2.go_toMIN();
       break;
 
-      case 'h':
+      case 'g':
       front_flipper2.go_toMAX();
+      break;
+
+      case 'y':
+      front_flipper1.go_toMAX();
+      break;
+
+      case 'h':
+      front_flipper1.go_toMIN();
       break;
 
       case 'q':
@@ -191,6 +191,7 @@ ServosUpdate();
       case 'n':      
       codo.go_toPrepos(1008);
       base.go_toMIN();
+      cuello.go_toPrepos(1616);
       break;
     
       case 'i':
