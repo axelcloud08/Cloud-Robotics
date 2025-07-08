@@ -15,6 +15,9 @@ Motors motor_driver(0,1);
 char direction;
 int speed;
 
+bool send_encoders = false;        
+bool encoders_ready = true; 
+
 bool isValid(char* str) {
   if (!isAlpha(str[0])) return false;
   if (str[1] != ',') return false;
@@ -51,7 +54,7 @@ Servo front_flipper2(3, 2200, 1008, 1648, 5);
 Servo base(4, 2000, 1084, 1084, 10);
 Servo codo(5, 2050, 1500, 1008, 15);
 Servo cuello(11, 2224, 1008, 1616, 10);
-Servo garra(7, 2224,1008, 2224, 10);
+Servo garra(10, 2224,1008, 1008, 10);
 
 
 void ServosUpdate(){
@@ -105,7 +108,7 @@ void setup() {
 void loop() {
 ServosUpdate(); 
 
-  if(EncodersPrint.termino()){
+   if (EncodersPrint.termino() && send_encoders) {
     EncodersPrint.reiniciar();
     String message = String(millis()) + "," +  String(left.ticks_count) + "," + String(rigth.ticks_count);
     Serial.println(message);
@@ -167,18 +170,18 @@ ServosUpdate();
       break;
 
       case 'q':
-      front_flipper1.go_toMAX();
-      front_flipper2.go_toMIN();
+      front_flipper1.go_toMIN();
+      front_flipper2.go_toMAX();
       back_flipper1.go_toMIN();
       back_flipper2.go_toMAX();
       break;
 
-      case 'z':    
+      case 'x':    
       front_flipper1.go_toMAX();
       front_flipper2.go_toMIN();
       break;
 
-      case 'x':     
+      case 'z':     
       front_flipper1.go_toMIN();
       front_flipper2.go_toMAX();
       break;
@@ -217,8 +220,22 @@ ServosUpdate();
       case 'p':
       garra.go_toMIN();
       break;
+
+      case 'm':
+      if (encoders_ready) {
+         send_encoders = !send_encoders;  
+         if (send_encoders) {
+         left.ticks_count = 0;
+         rigth.ticks_count = 0;
+        } 
+        encoders_ready = false; 
+        }
+        break;
+
      
     }
+
+    encoders_ready = true;
 
   }
 }
