@@ -170,18 +170,18 @@ ServosUpdate();
       break;
 
       case 'q':
-      front_flipper1.go_toMIN();
-      front_flipper2.go_toMAX();
+      front_flipper1.go_toMAX();
+      front_flipper2.go_toMIN();
       back_flipper1.go_toMIN();
       back_flipper2.go_toMAX();
       break;
 
-      case 'x':    
+      case 'z':    
       front_flipper1.go_toMAX();
       front_flipper2.go_toMIN();
       break;
 
-      case 'z':     
+      case 'x':     
       front_flipper1.go_toMIN();
       front_flipper2.go_toMAX();
       break;
