@@ -51,10 +51,10 @@ Servo back_flipper1(0, 2224, 1008, 1648, 5);
 Servo back_flipper2(1, 2224, 1008, 1648, 5);
 Servo front_flipper1(2, 2200, 1008, 1648, 5);
 Servo front_flipper2(3, 2200, 1008, 1648, 5);
-Servo base(4, 2000, 1084, 1084, 10);
-Servo codo(5, 2050, 1500, 1008, 15);
-Servo cuello(11, 2224, 1008, 1616, 10);
-Servo garra(10, 2224,1008, 1008, 10);
+Servo base(4, 2000, 1084, 1084, 15);
+Servo codo(5, 2050, 1500, 1008, 20);
+Servo cuello(11, 2224, 1008, 1616, 15);
+Servo garra(10, 2224,1008, 1008, 5);
 
 
 void ServosUpdate(){
@@ -170,18 +170,18 @@ ServosUpdate();
       break;
 
       case 'q':
-      front_flipper1.go_toMIN();
-      front_flipper2.go_toMAX();
+      front_flipper1.go_toMAX();
+      front_flipper2.go_toMIN();
       back_flipper1.go_toMIN();
       back_flipper2.go_toMAX();
       break;
 
-      case 'x':    
+      case 'z':    
       front_flipper1.go_toMAX();
       front_flipper2.go_toMIN();
       break;
 
-      case 'z':     
+      case 'x':     
       front_flipper1.go_toMIN();
       front_flipper2.go_toMAX();
       break;
